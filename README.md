@@ -1,6 +1,6 @@
 # bbTips
 
-**Current version:** 2.0.0-rc1
+**Current version:** 2.0.0-rc2
 
 [![Tests](https://github.com/avatharbe/bbTips/actions/workflows/tests.yml/badge.svg)](https://github.com/avatharbe/bbTips/actions/workflows/tests.yml)
 
