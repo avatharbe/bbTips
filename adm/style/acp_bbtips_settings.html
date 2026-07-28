@@ -1,0 +1,95 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{L_ACP_BBTIPS_SETTINGS}</h1>
+
+<form id="bbtips_settings" method="post" action="{U_ACTION}">
+<div>
+
+	<fieldset>
+		<legend>{L_ACP_BBTIPS_PROVIDERS}</legend>
+		<dl>
+			<dt><label for="bbtips_provider_wow">{L_ACP_BBTIPS_PROVIDER_WOW}:</label><br /><span>{L_ACP_BBTIPS_PROVIDER_WOW_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_provider_wow" value="1"<!-- IF S_BBTIPS_PROVIDER_WOW --> id="bbtips_provider_wow" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="bbtips_provider_wow" value="0"<!-- IF not S_BBTIPS_PROVIDER_WOW --> id="bbtips_provider_wow" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="bbtips_provider_diablo4">{L_ACP_BBTIPS_PROVIDER_DIABLO4}:</label><br /><span>{L_ACP_BBTIPS_PROVIDER_DIABLO4_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_provider_diablo4" value="1"<!-- IF S_BBTIPS_PROVIDER_DIABLO4 --> id="bbtips_provider_diablo4" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="bbtips_provider_diablo4" value="0"<!-- IF not S_BBTIPS_PROVIDER_DIABLO4 --> id="bbtips_provider_diablo4" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_BBTIPS_TAGS}</legend>
+		<!-- BEGIN tag -->
+		<dl>
+			<dt><label for="{tag.KEY}">{tag.LABEL}:</label><br /><span>{tag.EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="{tag.KEY}" value="1"<!-- IF tag.ENABLED --> id="{tag.KEY}" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="{tag.KEY}" value="0"<!-- IF not tag.ENABLED --> id="{tag.KEY}" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<!-- END tag -->
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_BBTIPS_BEHAVIOR}</legend>
+		<dl>
+			<dt><label for="bbtips_wow_domain">{L_ACP_BBTIPS_WOW_DOMAIN}:</label><br /><span>{L_ACP_BBTIPS_WOW_DOMAIN_EXPLAIN}</span></dt>
+			<dd><input class="medium" type="text" id="bbtips_wow_domain" name="bbtips_wow_domain" value="{BBTIPS_WOW_DOMAIN}" /></dd>
+		</dl>
+		<dl>
+			<dt><label>{L_ACP_BBTIPS_SCOPE}:</label><br /><span>{L_ACP_BBTIPS_SCOPE_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_scope" value="all"<!-- IF S_SCOPE_ALL --> checked="checked"<!-- ENDIF --> /> {L_ACP_BBTIPS_SCOPE_ALL}</label>
+				<label><input type="radio" class="radio" name="bbtips_scope" value="posts"<!-- IF S_SCOPE_POSTS --> checked="checked"<!-- ENDIF --> /> {L_ACP_BBTIPS_SCOPE_POSTS}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="bbtips_runtime_enabled">{L_ACP_BBTIPS_RUNTIME_ENABLED}:</label><br /><span>{L_ACP_BBTIPS_RUNTIME_ENABLED_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_runtime_enabled" value="1"<!-- IF S_BBTIPS_RUNTIME_ENABLED --> id="bbtips_runtime_enabled" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="bbtips_runtime_enabled" value="0"<!-- IF not S_BBTIPS_RUNTIME_ENABLED --> id="bbtips_runtime_enabled" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{L_ACP_BBTIPS_DISPLAY}</legend>
+		<dl>
+			<dt><label for="bbtips_color_links">{L_ACP_BBTIPS_COLOR_LINKS}:</label><br /><span>{L_ACP_BBTIPS_COLOR_LINKS_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_color_links" value="1"<!-- IF S_BBTIPS_COLOR_LINKS --> id="bbtips_color_links" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="bbtips_color_links" value="0"<!-- IF not S_BBTIPS_COLOR_LINKS --> id="bbtips_color_links" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="bbtips_iconize_links">{L_ACP_BBTIPS_ICONIZE_LINKS}:</label><br /><span>{L_ACP_BBTIPS_ICONIZE_LINKS_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_iconize_links" value="1"<!-- IF S_BBTIPS_ICONIZE_LINKS --> id="bbtips_iconize_links" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="bbtips_iconize_links" value="0"<!-- IF not S_BBTIPS_ICONIZE_LINKS --> id="bbtips_iconize_links" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="bbtips_rename_links">{L_ACP_BBTIPS_RENAME_LINKS}:</label><br /><span>{L_ACP_BBTIPS_RENAME_LINKS_EXPLAIN}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="bbtips_rename_links" value="1"<!-- IF S_BBTIPS_RENAME_LINKS --> id="bbtips_rename_links" checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="bbtips_rename_links" value="0"<!-- IF not S_BBTIPS_RENAME_LINKS --> id="bbtips_rename_links" checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+	{S_FORM_TOKEN}
+
+</div>
+</form>
+
+{% INCLUDE 'overall_footer.html' %}

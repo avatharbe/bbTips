@@ -1,0 +1,68 @@
+services:
+    avathar.bbtips.provider.wow:
+        class: avathar\bbtips\provider\wow_provider
+        arguments:
+            - '@config'
+        tags:
+            - { name: bbtips.tooltip_provider }
+
+    avathar.bbtips.provider.diablo4:
+        class: avathar\bbtips\provider\diablo4_provider
+        tags:
+            - { name: bbtips.tooltip_provider }
+
+    avathar.bbtips.provider_collection:
+        class: phpbb\di\service_collection
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: service_collection, tag: bbtips.tooltip_provider }
+
+    avathar.bbtips.provider_registry:
+        class: avathar\bbtips\provider\provider_registry
+        arguments:
+            - '@avathar.bbtips.provider_collection'
+
+    avathar.bbtips.linker:
+        class: avathar\bbtips\service\linker
+        arguments:
+            - '@avathar.bbtips.provider_registry'
+
+    avathar.bbtips.tag_gate:
+        class: avathar\bbtips\service\tag_gate
+        arguments:
+            - '@config'
+
+    avathar.bbtips.toolbar_builder:
+        class: avathar\bbtips\service\toolbar_builder
+        arguments:
+            - '@avathar.bbtips.provider_registry'
+            - '@avathar.bbtips.tag_gate'
+            - '@language'
+
+    avathar.bbtips.bbcode_listener:
+        class: avathar\bbtips\event\bbcode_listener
+        arguments:
+            - '@avathar.bbtips.provider_registry'
+            - '@avathar.bbtips.tag_gate'
+        tags:
+            - { name: event.listener }
+
+    avathar.bbtips.posting_listener:
+        class: avathar\bbtips\event\posting_listener
+        arguments:
+            - '@avathar.bbtips.toolbar_builder'
+            - '@template'
+            - '@language'
+        tags:
+            - { name: event.listener }
+
+    avathar.bbtips.runtime_listener:
+        class: avathar\bbtips\event\runtime_listener
+        arguments:
+            - '@avathar.bbtips.provider_registry'
+            - '@config'
+            - '@template'
+            - '@user'
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,18 @@
+{
+  "name": "avathar/bbtips",
+  "type": "phpbb-extension",
+  "description": "WowHead-style game-data tooltips (WoW + Diablo 4) as BBCodes for phpBB 3.3.",
+  "homepage": "https://github.com/avatharbe/bbTips",
+  "version": "2.0.0-rc2",
+  "time": "2026-07-25",
+  "license": "GPL-2.0-only",
+  "authors": [
+    { "name": "Andreas Vandenberghe (Sajaki)", "email": "sajaki@avathar.be", "homepage": "https://www.avathar.be", "role": "Developer" }
+  ],
+  "require": { "php": ">=8.1", "composer/installers": "~1.0" },
+  "extra": {
+    "display-name": "bbTips",
+    "soft-require": { "phpbb/phpbb": ">=3.3.0,<3.4.0@dev" },
+    "version-check": { "host": "www.avathar.be", "directory": "/versioncheck", "filename": "bbtips.json", "ssl": true }
+  }
+}

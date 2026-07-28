@@ -1,0 +1,43 @@
+<!-- IF S_BBTIPS_TOOLBAR -->
+	<style>
+	/* bbTips editor helper — sits in phpBB's .format-buttons row. Colours are
+	   inherited and softened with opacity so the text fits both light (prosilver)
+	   and dark (pbwow3 / pbtech) styles without hardcoding a palette. */
+	.bbtips-tag { margin-left: 3px; }
+	.bbtips-more { margin-left: 6px; max-width: 14em; vertical-align: middle; }
+	.bbtips-help { margin-left: 8px; font-size: 0.9em; font-style: italic; opacity: 0.75; vertical-align: middle; }
+	.bbtips-hint { display: inline-block; margin-top: 3px; font-size: 0.9em; font-style: italic; opacity: 0.75; }
+	</style>
+	<!-- BEGIN bbtips_headline -->
+		<button type="button" class="button button-secondary bbtips-tag bbtips-tag-{bbtips_headline.TAG}" name="bbtips_{bbtips_headline.TAG}" value="{bbtips_headline.TAG}" onclick="bbfontstyle('{bbtips_headline.OPEN}', '{bbtips_headline.CLOSE}'); return false;" title="{bbtips_headline.HELP}">
+			{bbtips_headline.TAG}
+		</button>
+	<!-- END bbtips_headline -->
+
+	<select class="bbtips-more" onchange="bbtips_insert(this);" aria-label="{L_BBTIPS_TOOLBAR_ARIA}" title="{L_BBTIPS_TOOLBAR_LABEL}">
+		<option value="">{L_BBTIPS_TOOLBAR_MORE}</option>
+		<!-- BEGIN bbtips_group -->
+			<optgroup label="{bbtips_group.GAME}">
+				<!-- BEGIN opt -->
+					<option value="{bbtips_group.opt.TAG}" data-open="{bbtips_group.opt.OPEN}" data-close="{bbtips_group.opt.CLOSE}" data-help="{bbtips_group.opt.HELP}">{bbtips_group.opt.TAG}</option>
+				<!-- END opt -->
+			</optgroup>
+		<!-- END bbtips_group -->
+	</select>
+	<span class="bbtips-help" id="bbtips-help" aria-live="polite"></span>
+
+	<script>
+	// Defined once per page; inserts the selected tag skeleton and shows its help line.
+	if (typeof window.bbtips_insert === 'undefined') {
+		window.bbtips_insert = function (sel) {
+			var o = sel.options[sel.selectedIndex];
+			if (o && o.getAttribute('data-open')) {
+				bbfontstyle(o.getAttribute('data-open'), o.getAttribute('data-close'));
+				var h = document.getElementById('bbtips-help');
+				if (h) { h.textContent = o.getAttribute('data-help') || ''; }
+			}
+			sel.selectedIndex = 0;
+		};
+	}
+	</script>
+<!-- ENDIF -->
