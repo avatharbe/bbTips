@@ -12,7 +12,7 @@ bbTips brings WowHead-style hover tooltips to phpBB 3.3 as a set of BBCodes, let
 
 ## Requirements
 
-- phpBB >= 3.3.0
+- phpBB >= 3.3.11
 - PHP >= 8.1.0
 
 ## Installation

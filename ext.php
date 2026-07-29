@@ -12,7 +12,7 @@ class ext extends base
 {
 	const BBTIPS_VERSION    = '2.0.0-rc2';
 	const MIN_PHP_VERSION   = '8.1.0';
-	const MIN_PHPBB_VERSION = '3.3.0';
+	const MIN_PHPBB_VERSION = '3.3.11';
 
 	public function is_enableable()
 	{
