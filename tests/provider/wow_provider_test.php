@@ -58,4 +58,24 @@ class wow_provider_test extends TestCase
 	{
 		$this->assertSame(['item', 'spell'], $this->p->get_primary_tags());
 	}
+
+	public function test_item_link_with_bonus_emits_bonus_param(): void
+	{
+		$html = $this->p->build_link('item', 50468, ['bonus' => '6652:1487']);
+		$this->assertStringContainsString('&amp;bonus=6652:1487', $html);
+	}
+
+	public function test_item_link_bonus_accepts_array(): void
+	{
+		$html = $this->p->build_link('item', 50468, ['bonus' => [6652, 1487]]);
+		$this->assertStringContainsString('&amp;bonus=6652:1487', $html);
+	}
+
+	public function test_item_tag_usage_declares_bonus_attr(): void
+	{
+		$tag = null;
+		foreach ($this->p->get_tags() as $t) { if ($t['bbcode'] === 'item') { $tag = $t; break; } }
+		$this->assertNotNull($tag);
+		$this->assertStringContainsString('bonus={REGEXP', $tag['usage']);
+	}
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0-rc3
+
+  - wow_provider: added optional `bonus` param/attribute (WowHead `data-wowhead` bonus IDs); additive, backward-compatible.
+
 ## 2.0.0-rc2
 
   - [NEW] Posting-editor insertion helper — a "Game tooltips" toolbar control (always-visible `[item]`/`[spell]` buttons plus a game-grouped "More tooltips…" dropdown with a live per-tag help line) and a hint line under "BBCode is ON", so users can insert tooltip tags without typing brackets. Tag parsing is unchanged; visibility follows the existing per-provider/per-tag toggles.

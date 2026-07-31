@@ -46,6 +46,7 @@ class wow_provider extends abstract_wowhead_provider
 			'ench'   => $opts['ench'] ?? '',
 			'gems'   => is_array($opts['gems'] ?? null) ? implode(':', $opts['gems']) : ($opts['gems'] ?? ''),
 			'pcs'    => $opts['pcs'] ?? '',
+			'bonus'  => is_array($opts['bonus'] ?? null) ? implode(':', $opts['bonus']) : ($opts['bonus'] ?? ''),
 		];
 		return $this->wowhead_anchor($href, $data, (string) ($opts['text'] ?? $id));
 	}
@@ -73,6 +74,7 @@ class wow_provider extends abstract_wowhead_provider
 		// gems/pcs accept colon-separated numeric lists (e.g. 40133:40132); a REGEXP token permits ':'.
 		$usage = "[$B domain={SIMPLETEXT1;optional} ench={UINT;optional}"
 			. " gems={REGEXP=/^\\d+(:\\d+)*\$/;optional} pcs={REGEXP=/^\\d+(:\\d+)*\$/;optional}"
+			. " bonus={REGEXP=/^\\d+(:\\d+)*\$/;optional}"
 			. ($icon ? " size={SIMPLETEXT2;optional}" : "")
 			. "]{UINT2}[/$B]";
 		// Domain emission: per-tag @domain wins; else fall back to the configured board default (if any).
@@ -92,7 +94,8 @@ class wow_provider extends abstract_wowhead_provider
 			. $domain_xsl
 			. "<xsl:if test=\"@ench\">&amp;ench=<xsl:value-of select=\"@ench\"/></xsl:if>"
 			. "<xsl:if test=\"@gems\">&amp;gems=<xsl:value-of select=\"@gems\"/></xsl:if>"
-			. "<xsl:if test=\"@pcs\">&amp;pcs=<xsl:value-of select=\"@pcs\"/></xsl:if>";
+			. "<xsl:if test=\"@pcs\">&amp;pcs=<xsl:value-of select=\"@pcs\"/></xsl:if>"
+			. "<xsl:if test=\"@bonus\">&amp;bonus=<xsl:value-of select=\"@bonus\"/></xsl:if>";
 		$icon_attr = $icon ? "<xsl:if test=\"@size\"><xsl:attribute name=\"data-wh-icon-size\"><xsl:value-of select=\"@size\"/></xsl:attribute></xsl:if>" : "";
 		$template = "<a href=\"https://www.wowhead.com/$wtype={@content}\">"
 			. "<xsl:attribute name=\"data-wowhead\">$data</xsl:attribute>$icon_attr"
