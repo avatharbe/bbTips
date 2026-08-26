@@ -4,7 +4,7 @@
   "description": "WowHead-style game-data tooltips (WoW + Diablo 4) as BBCodes for phpBB 3.3.",
   "homepage": "https://github.com/avatharbe/bbTips",
   "version": "2.0.0-rc3",
-  "time": "2026-07-25",
+  "time": "2026-08-26",
   "license": "GPL-2.0-only",
   "authors": [
     { "name": "Andreas Vandenberghe (Sajaki)", "email": "sajaki@avathar.be", "homepage": "https://www.avathar.be", "role": "Developer" }

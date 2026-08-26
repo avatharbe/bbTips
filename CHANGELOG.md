@@ -2,7 +2,8 @@
 
 ## 2.0.0-rc3
 
-  - wow_provider: added optional `bonus` param/attribute (WowHead `data-wowhead` bonus IDs); additive, backward-compatible.
+  - [CHG] Minimum supported phpBB raised from 3.3.0 to 3.3.11 (`ext.php`, `composer.json` soft-require). Boards below 3.3.11 will no longer be able to enable the extension.
+  - [NEW] `wow_provider`: optional `bonus` param/attribute (WowHead `data-wowhead` bonus IDs); additive, backward-compatible.
 
 ## 2.0.0-rc2
 
